@@ -1,4 +1,4 @@
-# 🎓 Certificate Verification System
+# 🎓 Certify
 
 A full-stack MERN application that allows institutions to **issue, manage, and verify certificates securely**.
 
