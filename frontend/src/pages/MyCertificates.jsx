@@ -31,7 +31,7 @@ const MyCertificates = () => {
     setTimeout(async () => {
       if (currentUser) {
         try {
-          const metricRes = await fetch('${API_URL}/api/auth/metrics', {
+          const metricRes = await fetch(`${API_URL}/api/auth/metrics`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: currentUser.email, role: currentUser.role, metric: 'downloads' })

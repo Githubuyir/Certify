@@ -37,7 +37,7 @@ const ProfileSettings = () => {
     
     try {
       const user = JSON.parse(localStorage.getItem('user')) || {};
-      const response = await fetch('${API_URL}/api/auth/profile', {
+      const response = await fetch(`${API_URL}/api/auth/profile`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

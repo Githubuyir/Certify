@@ -22,7 +22,7 @@ const GenerateCertificate = () => {
   const handleSaveCertificate = async () => {
     try {
       const user = JSON.parse(localStorage.getItem('user')) || {};
-      const response = await fetch('${API_URL}/api/certificates', {
+      const response = await fetch(`${API_URL}/api/certificates`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -82,7 +82,7 @@ const UploadCertificates = () => {
        if (parts.length === 3) endDateObj = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
 
        try {
-         const response = await fetch('${API_URL}/api/certificates', {
+         const response = await fetch(`${API_URL}/api/certificates`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

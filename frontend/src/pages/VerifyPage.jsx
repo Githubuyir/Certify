@@ -57,7 +57,7 @@ const VerifyPage = () => {
 
         // Natively increment tracking arrays securely if logged in
         if (currentUser) {
-           const metricRes = await fetch('${API_URL}/api/auth/metrics', {
+           const metricRes = await fetch(`${API_URL}/api/auth/metrics`, {
               method: 'PUT',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ email: currentUser.email, role: currentUser.role, metric: 'verifications' })

@@ -22,7 +22,7 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('${API_URL}/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, role })
@@ -59,7 +59,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const currentRole = roleRef.current;
-      const res = await fetch('${API_URL}/api/auth/google', {
+      const res = await fetch(`${API_URL}/api/auth/google', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
