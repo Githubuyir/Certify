@@ -6,9 +6,10 @@ A full-stack MERN application that allows institutions to **issue, manage, and v
 
 ## 🚀 Live Demo
 
-* 🌐 **Frontend (Vercel):** 
+* 🌐 **Frontend (Vercel):** https://certify-jet.vercel.app/
 * ⚙️ **Backend (Render):** https://certify-3bms.onrender.com
 
+⚠️ Note: Backend may take 10–20 seconds to respond initially due to Render free tier sleep.
 ---
 
 ## 📌 Features
