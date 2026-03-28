@@ -1,6 +1,7 @@
 import React from 'react';
 import { FileBadge, Users, Activity, UploadCloud, TrendingUp, Filter, Search, CheckCircle, XCircle, MoreVertical } from 'lucide-react';
 import './AdminDashboard.css';
+import API_URL from "../api";
 
 const AdminDashboard = () => {
   const [certs, setCerts] = React.useState([]);
@@ -11,7 +12,7 @@ const AdminDashboard = () => {
     setUser(currentUser);
     if (currentUser) {
       const org = currentUser.institutionName || 'Tech Academy Institute';
-      fetch(`http://localhost:5000/api/certificates?organization=${encodeURIComponent(org)}`)
+      fetch(`${API_URL}/api/certificates?organization=${encodeURIComponent(org)}`)
         .then(res => res.json())
         .then(data => setCerts(data))
         .catch(console.error);

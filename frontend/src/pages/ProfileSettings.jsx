@@ -3,6 +3,7 @@ import { User, Mail, Linkedin, Save } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
+import API_URL from "../api";
 
 const ProfileSettings = () => {
   const [profile, setProfile] = useState({
@@ -36,7 +37,7 @@ const ProfileSettings = () => {
     
     try {
       const user = JSON.parse(localStorage.getItem('user')) || {};
-      const response = await fetch('http://localhost:5000/api/auth/profile', {
+      const response = await fetch('${API_URL}/api/auth/profile', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

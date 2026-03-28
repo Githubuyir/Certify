@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import html2pdf from 'html2pdf.js';
 import CertificatePreview from '../components/CertificatePreview';
 import './GenerateCertificate.css';
+import API_URL from "../api";
 
 const GenerateCertificate = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const GenerateCertificate = () => {
   const handleSaveCertificate = async () => {
     try {
       const user = JSON.parse(localStorage.getItem('user')) || {};
-      const response = await fetch('http://localhost:5000/api/certificates', {
+      const response = await fetch('${API_URL}/api/certificates', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

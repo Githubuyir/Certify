@@ -12,6 +12,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import './LandingPage.css';
+import API_URL from "../api";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const LandingPage = () => {
     setVerifyError(null);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/certificates/verify/${certId}`);
+      const res = await fetch(`${API_URL}/api/certificates/verify/${certId}`);
       const data = await res.json();
       
       if (res.ok && data.valid) {

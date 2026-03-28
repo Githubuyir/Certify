@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mail, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 import './Auth.css';
+import API_URL from "../api";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/forgotpassword', {
+      const res = await fetch('${API_URL}/api/auth/forgotpassword', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, role })

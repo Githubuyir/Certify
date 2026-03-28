@@ -2,6 +2,7 @@ import React from 'react';
 import { Award, CheckCircle, DownloadCloud, Sparkles, ShieldCheck, XCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './StudentDashboard.css';
+import API_URL from "../api";
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const StudentDashboard = () => {
     setUser(currentUser);
 
     if (currentUser && currentUser.email) {
-      fetch(`http://localhost:5000/api/certificates?email=${currentUser.email}`)
+      fetch(`${API_URL}/api/certificates?email=${currentUser.email}`)
         .then(res => res.json())
         .then(data => setCerts(data))
         .catch(console.error);

@@ -4,6 +4,7 @@ import { ShieldCheck, UserPlus, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { GoogleLogin } from '@react-oauth/google';
 import './Auth.css';
+import API_URL from "../api";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const RegisterPage = () => {
     setIsLoading(true);
     
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch('${API_URL}/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -64,7 +65,7 @@ const RegisterPage = () => {
     setIsLoading(true);
     try {
       const currentRole = roleRef.current;
-      const res = await fetch('http://localhost:5000/api/auth/google', {
+      const res = await fetch('${API_URL}/api/auth/google', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

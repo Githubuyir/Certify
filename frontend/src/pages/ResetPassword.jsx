@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { KeyRound, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 import './Auth.css';
+import API_URL from "../api";
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -21,7 +22,7 @@ const ResetPassword = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/resetpassword/${token}`, {
+      const res = await fetch(`${API_URL}/api/auth/resetpassword/${token}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password })

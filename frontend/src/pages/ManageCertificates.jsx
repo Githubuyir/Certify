@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import html2pdf from 'html2pdf.js';
 import CertificatePreview from '../components/CertificatePreview';
 import './ManageCertificates.css';
+import API_URL from "../api";
 
 const ManageCertificates = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,7 +30,7 @@ const ManageCertificates = () => {
     const user = JSON.parse(localStorage.getItem('user')) || {};
     const orgQuery = user.institutionName ? `?organization=${encodeURIComponent(user.institutionName)}` : '';
 
-    fetch(`http://localhost:5000/api/certificates${orgQuery}`)
+    fetch(`${API_URL}/api/certificates${orgQuery}`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -56,7 +57,7 @@ const ManageCertificates = () => {
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/certificates/${id}/status`, {
+      const res = await fetch(`${API_URL}/api/certificates/${id}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })
@@ -67,7 +68,7 @@ const ManageCertificates = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/certificates/${id}`, {
+      const res = await fetch(`${API_URL}/api/certificates/${id}`, {
         method: 'DELETE'
       });
       if (res.ok) {

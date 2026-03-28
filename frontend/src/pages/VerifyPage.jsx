@@ -6,6 +6,7 @@ import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Search, CheckCircle, XCircle, Shield, DownloadCloud, UploadCloud } from 'lucide-react';
+import API_URL from "../api";
 
 const VerifyPage = () => {
   const [searchParams] = useSearchParams();
@@ -37,7 +38,7 @@ const VerifyPage = () => {
     setResult(null);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/certificates/verify/${idToVerify}`);
+      const res = await fetch(`${API_URL}/api/certificates/verify/${idToVerify}`);
       const data = await res.json();
       
       if (res.ok && data.valid) {
@@ -56,7 +57,7 @@ const VerifyPage = () => {
 
         // Natively increment tracking arrays securely if logged in
         if (currentUser) {
-           const metricRes = await fetch('http://localhost:5000/api/auth/metrics', {
+           const metricRes = await fetch('${API_URL}/api/auth/metrics', {
               method: 'PUT',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ email: currentUser.email, role: currentUser.role, metric: 'verifications' })

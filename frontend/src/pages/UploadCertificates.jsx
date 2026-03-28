@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { UploadCloud, FileSpreadsheet, AlertCircle, CheckCircle2, ChevronRight, Download } from 'lucide-react';
 import toast from 'react-hot-toast';
 import './UploadCertificates.css';
+import API_URL from "../api";
 
 const UploadCertificates = () => {
   const [file, setFile] = useState(null);
@@ -81,7 +82,7 @@ const UploadCertificates = () => {
        if (parts.length === 3) endDateObj = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
 
        try {
-         const response = await fetch('http://localhost:5000/api/certificates', {
+         const response = await fetch('${API_URL}/api/certificates', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

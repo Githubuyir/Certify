@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
 import CertificatePreview from '../components/CertificatePreview';
 import './MyCertificates.css';
+import API_URL from "../api";
 
 const MyCertificates = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,7 +19,7 @@ const MyCertificates = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     setCurrentUser(user);
     if (user?.email) {
-      fetch(`http://localhost:5000/api/certificates?email=${user.email}`)
+      fetch(`${API_URL}/api/certificates?email=${user.email}`)
         .then(res => res.json())
         .then(data => setCerts(data))
         .catch(console.error);
@@ -30,7 +31,7 @@ const MyCertificates = () => {
     setTimeout(async () => {
       if (currentUser) {
         try {
-          const metricRes = await fetch('http://localhost:5000/api/auth/metrics', {
+          const metricRes = await fetch('${API_URL}/api/auth/metrics', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: currentUser.email, role: currentUser.role, metric: 'downloads' })
