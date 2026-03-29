@@ -22,7 +22,7 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, role })
@@ -34,7 +34,7 @@ const LoginPage = () => {
         // Enforce strict alignment of UI tab selection and backend Role validation 
         if(data.role !== role) {
           setIsLoading(false);
-          return toast.error(`Access Denied: You cannot log into the ${role} portal with a ${data.role} account.`);
+          return toast.error(`Access Denied: You cannot log into the ' + role + ' portal with a ' + data.role + ' account.`);
         }
 
         toast.success(`Welcome back, ${data.name}!`);
@@ -59,7 +59,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const currentRole = roleRef.current;
-      const res = await fetch(`${API_URL}/api/auth/google', {
+      const res = await fetch(`${API_URL}/api/auth/google`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
